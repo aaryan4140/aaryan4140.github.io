@@ -1,6 +1,7 @@
 # Aaryan Tiwari — Lead GenAI Engineer & AI Systems Architect
 
 Modern personal portfolio and interactive engineering showcase hosted on GitHub Pages.
+Lead GenAI Engineer & AI Systems Architect • MBA Finance @ IIT Patna • B.Tech @ JECRC Jaipur.
 
 🔗 **Live Portfolio**: [https://aaryan4140.github.io](https://aaryan4140.github.io)
 
