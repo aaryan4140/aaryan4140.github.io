@@ -714,7 +714,7 @@ Client -> Perimeter Edge WAF (Tunneling ?_method=PUT) -> Nginx :80 (300s timeout
 • Email: <a href="mailto:taaryan.official@gmail.com" class="term-prompt">taaryan.official@gmail.com</a>
 • Phone: +91 7488372401 / 9664387116
 • LinkedIn: <a href="https://linkedin.com/in/aaryan-tiwari" target="_blank" class="term-prompt">linkedin.com/in/aaryan-tiwari</a>
-• GitHub: <a href="https://github.com/aaryan4140" target="_blank" class="term-prompt">github.com/aaryan4140</a>
+• GitHub: <a href="https://github.com/tiwariaaryan" target="_blank" class="term-prompt">github.com/tiwariaaryan</a>
 • Location: Bengaluru, India
     `,
     resume: `

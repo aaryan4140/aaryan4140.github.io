@@ -3,7 +3,7 @@
 Modern personal portfolio and interactive engineering showcase hosted on GitHub Pages.
 Lead GenAI Engineer & AI Systems Architect • MBA Finance @ IIT Patna • B.Tech @ JECRC Jaipur.
 
-🔗 **Live Portfolio**: [https://aaryan4140.github.io](https://aaryan4140.github.io)
+🔗 **Live Portfolio**: [https://tiwariaaryan.github.io](https://tiwariaaryan.github.io)
 
 ## Highlights
 - **Specializations**: Enterprise GenAI Orchestration, Autonomous Agent Systems, FastMCP Tools, LLM Evaluation Frameworks, Quant Finance MLOps.
@@ -13,4 +13,4 @@ Lead GenAI Engineer & AI Systems Architect • MBA Finance @ IIT Patna • B.Tec
 ## Contact & Inquiries
 - **Email**: [tiwariaaryan626@gmail.com](mailto:tiwariaaryan626@gmail.com)
 - **LinkedIn**: [linkedin.com/in/aaryan-tiwari](https://linkedin.com/in/aaryan-tiwari)
-- **GitHub**: [github.com/aaryan4140](https://github.com/aaryan4140)
+- **GitHub**: [github.com/tiwariaaryan](https://github.com/tiwariaaryan)
