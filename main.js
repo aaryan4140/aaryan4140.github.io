@@ -644,8 +644,8 @@ Available Commands:
     `,
     about: `
 <strong>Aaryan Tiwari</strong>
-<span class="term-prompt">Lead GenAI Engineer & Senior AI Systems Architect</span>
-Location: Bengaluru, India | Experience: 5+ Years | Team Leadership: 20+ AI Engineers
+<span class="term-prompt">Lead AI Engineer (GenAI & Distributed Systems)</span>
+Location: Bengaluru, India | Experience: 5+ Years | Team Leadership: 50+ AI Engineers
 Academics: MBA in Finance @ IIT Patna (2026–2028) | B.Tech @ JECRC Jaipur (2017–2021)
 Specializations: Agentic AI, MCP Architecture, Multi-Pass LLM Evaluation, Adversarial Red-Teaming, MLOps, Enterprise RAG.
     `,
@@ -659,7 +659,7 @@ Specializations: Agentic AI, MCP Architecture, Multi-Pass LLM Evaluation, Advers
     experience: `
 <span class="term-accent">[PROFESSIONAL CAREER HIGHLIGHTS]</span>
 1. <strong>Lead AI Engineer & Team Lead</strong> — Introlligent (Oct 2024 – Present)
-   • Architected Enterprise Multi-Agent Platform & LLM-as-a-Judge evaluation ecosystem. Managing 20+ engineers.
+   • Architected Enterprise Multi-Agent Platform & LLM-as-a-Judge evaluation ecosystem. Managing 50+ engineers.
    • Built FastMCP server exposing 23+ enterprise backend APIs with dual stdio/SSE transport.
    • Designed 5 adversarial red-teaming mutation engines & counterfactual demographic fairness.
 2. <strong>AI/ML Engineer</strong> — Ernst & Young (EY GDS) (Feb 2022 – Jul 2024)
