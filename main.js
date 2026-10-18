@@ -234,6 +234,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 11. Setup Minimalist Project Detail Modal
   initProjectModal();
+
+  // 12. Setup Flat Grounded Cards with Subtle Spotlight (Zero Tilt)
+  initFlatCardsWithSpotlight();
+
+  // 13. Setup Magnetic Button Interactions
+  initMagneticButtons();
+
+  // 14. Setup Staggered Scroll Reveal
+  initScrollReveal();
+
+  // 15. Setup Animated Counter Rollup
+  initCounterAnimation();
 });
 
 // ============================================================================
@@ -1135,4 +1147,185 @@ function initProjectModal() {
       closeModal();
     }
   });
+}
+
+// ============================================================================
+// 12. FLAT GROUNDED CARDS WITH SUBTLE CURSOR SPOTLIGHT (ZERO TILT)
+// ============================================================================
+function initFlatCardsWithSpotlight() {
+  if (window.matchMedia('(hover: none)').matches) return;
+
+  // Restrict spotlight strictly to individual content cards (no giant section tilt)
+  const targetCards = document.querySelectorAll('.project-card-clean, .skill-card-v2');
+
+  targetCards.forEach(card => {
+    if (!card.querySelector('.card-spotlight-glow')) {
+      const glow = document.createElement('div');
+      glow.className = 'card-spotlight-glow';
+      card.appendChild(glow);
+    }
+
+    let isHovered = false;
+    let rafId = null;
+
+    card.addEventListener('mouseenter', () => {
+      isHovered = true;
+    });
+
+    card.addEventListener('mousemove', (e) => {
+      if (!isHovered) return;
+      if (rafId) cancelAnimationFrame(rafId);
+
+      rafId = requestAnimationFrame(() => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const glow = card.querySelector('.card-spotlight-glow');
+        if (glow) {
+          glow.style.opacity = '1';
+          glow.style.background = `radial-gradient(circle 340px at ${x}px ${y}px, rgba(59, 130, 246, 0.14), transparent 70%)`;
+        }
+      });
+    });
+
+    card.addEventListener('mouseleave', () => {
+      isHovered = false;
+      if (rafId) cancelAnimationFrame(rafId);
+      const glow = card.querySelector('.card-spotlight-glow');
+      if (glow) {
+        glow.style.opacity = '0';
+      }
+    });
+  });
+}
+
+// ============================================================================
+// 13. MAGNETIC BUTTON INTERACTIONS
+// ============================================================================
+function initMagneticButtons() {
+  if (window.matchMedia('(hover: none)').matches) return;
+
+  const magneticTargets = document.querySelectorAll(
+    '.nav-link-hire, .btn-hire-primary, .btn-hire-secondary, .nav-cta, .btn-primary, .btn-secondary, .hero-hire-cta'
+  );
+
+  magneticTargets.forEach(btn => {
+    btn.classList.add('magnetic-btn');
+
+    let rafId = null;
+
+    btn.addEventListener('mousemove', (e) => {
+      if (rafId) cancelAnimationFrame(rafId);
+
+      rafId = requestAnimationFrame(() => {
+        const rect = btn.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // Smooth clamped magnetic displacement (max ±7px)
+        const deltaX = Math.max(-7, Math.min(7, (e.clientX - centerX) * 0.22));
+        const deltaY = Math.max(-7, Math.min(7, (e.clientY - centerY) * 0.22));
+
+        btn.style.transform = `translate(${deltaX.toFixed(1)}px, ${deltaY.toFixed(1)}px)`;
+      });
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      btn.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease';
+      btn.style.transform = 'translate(0px, 0px)';
+
+      setTimeout(() => {
+        btn.style.transition = '';
+      }, 450);
+    });
+  });
+}
+
+// ============================================================================
+// 14. STAGGERED SCROLL REVEAL ANIMATIONS
+// ============================================================================
+function initScrollReveal() {
+  const revealTargets = document.querySelectorAll(
+    '.project-card-clean, .skill-card-v2, .experience-card, .sales-service-card, .diff-item, .stat-counter-card, .education-card'
+  );
+
+  if (!revealTargets.length) return;
+
+  revealTargets.forEach(el => {
+    el.classList.add('scroll-reveal-item');
+
+    // Calculate sibling index inside current grid for organic staggered delay
+    if (el.parentElement) {
+      const siblings = Array.from(el.parentElement.children).filter(c =>
+        c.matches('.project-card-clean, .skill-card-v2, .experience-card, .sales-service-card, .diff-item, .stat-counter-card, .education-card')
+      );
+      const index = siblings.indexOf(el);
+      if (index >= 0) {
+        el.style.transitionDelay = `${(index % 4) * 0.08}s`;
+      }
+    }
+  });
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealTargets.forEach(el => observer.observe(el));
+}
+
+// ============================================================================
+// 13. ANIMATED COUNTER ROLLUP (ON SCROLL)
+// ============================================================================
+function initCounterAnimation() {
+  const counterGrid = document.querySelector('.quick-counters-grid');
+  if (!counterGrid) return;
+
+  let hasAnimated = false;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !hasAnimated) {
+        hasAnimated = true;
+        animateCounters();
+      }
+    });
+  }, { threshold: 0.25 });
+
+  observer.observe(counterGrid);
+
+  function animateCounters() {
+    const counterVals = document.querySelectorAll('.counter-val[data-target]');
+    counterVals.forEach(el => {
+      const target = parseFloat(el.getAttribute('data-target'));
+      const suffix = el.getAttribute('data-suffix') || '';
+      const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      const duration = 1600;
+      const startTime = performance.now();
+
+      function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        const easeOut = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        const currentVal = (target * easeOut).toFixed(decimals);
+
+        el.textContent = `${currentVal}${suffix}`;
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        } else {
+          el.textContent = `${target}${suffix}`;
+        }
+      }
+
+      requestAnimationFrame(updateCounter);
+    });
+  }
 }

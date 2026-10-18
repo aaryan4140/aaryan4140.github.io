@@ -299,12 +299,24 @@ section {
   align-items: center;
   gap: 0.35rem;
   transition: all 0.2s ease !important;
+  animation: hirePillGlow 3.5s infinite ease-in-out;
+}
+
+@keyframes hirePillGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(52, 211, 153, 0.2);
+    border-color: rgba(52, 211, 153, 0.38);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(52, 211, 153, 0.5);
+    border-color: rgba(52, 211, 153, 0.75);
+  }
 }
 
 .nav-link.nav-link-hire:hover {
-  background: rgba(52, 211, 153, 0.22) !important;
-  border-color: rgba(52, 211, 153, 0.65) !important;
-  box-shadow: 0 0 16px rgba(52, 211, 153, 0.35) !important;
+  background: rgba(52, 211, 153, 0.25) !important;
+  border-color: rgba(52, 211, 153, 0.8) !important;
+  box-shadow: 0 0 20px rgba(52, 211, 153, 0.5) !important;
   transform: translateY(-1px);
 }
 
@@ -458,6 +470,25 @@ section {
   align-items: center;
   gap: 0.65rem;
   margin-bottom: 1.5rem;
+}
+
+.hero-badge-row .clean-badge,
+.hero-badge-row .section-tag {
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 30px !important;
+  box-sizing: border-box !important;
+  line-height: 1 !important;
+  padding: 0 0.8rem !important;
+  font-size: 0.74rem !important;
+  border-radius: var(--radius-full) !important;
+  vertical-align: middle !important;
+}
+
+.hero-badge-row .clean-badge .status-dot {
+  margin-right: 0.45rem;
 }
 
 .clean-badge {
@@ -2320,13 +2351,16 @@ footer {
   color: var(--text-main);
   padding: 0.3rem 0.65rem;
   border-radius: var(--radius-sm);
-  transition: all var(--transition-fast);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
 }
 
 .skill-pill-item:hover {
-  border-color: rgba(59, 130, 246, 0.4);
+  border-color: rgba(59, 130, 246, 0.6);
   color: #fff;
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(59, 130, 246, 0.16);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35);
 }
 
 .skill-pill-item.highlight-pill {
@@ -2336,11 +2370,27 @@ footer {
   font-weight: 600;
 }
 
+.skill-pill-item.highlight-pill:hover {
+  border-color: rgba(52, 211, 153, 0.85);
+  background: rgba(52, 211, 153, 0.22);
+  color: #fff;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 18px rgba(52, 211, 153, 0.45);
+}
+
 .skill-pill-item.highlight-gold {
   border-color: rgba(245, 158, 11, 0.4);
   background: rgba(245, 158, 11, 0.08);
   color: #fbbf24;
   font-weight: 600;
+}
+
+.skill-pill-item.highlight-gold:hover {
+  border-color: rgba(245, 158, 11, 0.85);
+  background: rgba(245, 158, 11, 0.22);
+  color: #fff;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 18px rgba(245, 158, 11, 0.45);
 }
 
 /* Portrait Card Company Badges */
@@ -2543,12 +2593,24 @@ footer {
 
 .freelance-sales-card {
   background: linear-gradient(135deg, rgba(13, 20, 32, 0.95) 0%, rgba(8, 12, 20, 0.95) 100%);
-  border: 1px solid rgba(52, 211, 153, 0.3);
+  border: 1px solid rgba(52, 211, 153, 0.35);
   border-radius: var(--radius-lg);
   padding: 2.75rem;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(16, 185, 129, 0.1);
   position: relative;
   overflow: hidden;
+  animation: borderPulseShimmer 5s infinite ease-in-out;
+}
+
+@keyframes borderPulseShimmer {
+  0%, 100% {
+    border-color: rgba(52, 211, 153, 0.35);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4), 0 0 25px rgba(16, 185, 129, 0.12);
+  }
+  50% {
+    border-color: rgba(52, 211, 153, 0.7);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 45px rgba(52, 211, 153, 0.3);
+  }
 }
 
 .sales-header-flex {
@@ -2844,6 +2906,39 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+.btn-card-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.95rem;
+  background: rgba(59, 130, 246, 0.12);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-card-explore svg {
+  transition: transform 0.2s ease;
+}
+
+.minimal-project-card:hover .btn-card-explore,
+.btn-card-explore:hover {
+  background: rgba(59, 130, 246, 0.24);
+  color: #ffffff;
+  border-color: rgba(96, 165, 250, 0.7);
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.4);
+}
+
+.minimal-project-card:hover .btn-card-explore svg,
+.btn-card-explore:hover svg {
+  transform: translateX(3px);
+}
+
 .explore-details-link {
   font-family: var(--font-mono);
   font-size: 0.82rem;
@@ -2967,4 +3062,209 @@ footer {
 
 .modal-section-block li {
   margin-bottom: 0.4rem;
+}
+
+/* ==========================================================================
+   AMBIENT CALMING AURORA BACKGROUND MESH (SLOW & SUBTLE)
+   ========================================================================== */
+.aurora-ambient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  filter: blur(90px);
+  opacity: 0.55;
+}
+
+.aurora-orb {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.aurora-orb-1 {
+  top: -15%;
+  left: 10%;
+  width: 55vw;
+  height: 55vw;
+  max-width: 700px;
+  max-height: 700px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.13) 0%, rgba(99, 102, 241, 0.04) 50%, transparent 75%);
+  animation: auroraFlow1 28s infinite alternate ease-in-out;
+}
+
+.aurora-orb-2 {
+  bottom: -10%;
+  right: 5%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 650px;
+  max-height: 650px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.10) 0%, rgba(5, 150, 105, 0.03) 50%, transparent 75%);
+  animation: auroraFlow2 34s infinite alternate ease-in-out;
+}
+
+.aurora-orb-3 {
+  top: 35%;
+  left: 30%;
+  width: 45vw;
+  height: 45vw;
+  max-width: 550px;
+  max-height: 550px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.09) 0%, rgba(99, 102, 241, 0.02) 50%, transparent 75%);
+  animation: auroraFlow3 30s infinite alternate ease-in-out;
+}
+
+@keyframes auroraFlow1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(70px, 45px) scale(1.08); }
+  100% { transform: translate(-45px, 80px) scale(0.96); }
+}
+
+@keyframes auroraFlow2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-65px, -40px) scale(1.1); }
+  100% { transform: translate(40px, -70px) scale(0.94); }
+}
+
+@keyframes auroraFlow3 {
+  0% { transform: translate(0, 0) scale(0.96); }
+  50% { transform: translate(-50px, 55px) scale(1.05); }
+  100% { transform: translate(60px, -35px) scale(1); }
+}
+
+/* ==========================================================================
+   FLAT & GROUNDED CARDS (ZERO TILT) WITH SMOOTH STABLE ELEVATION
+   ========================================================================== */
+.project-card-clean,
+.skill-card-v2 {
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: transform, box-shadow;
+}
+
+.project-card-clean:hover,
+.skill-card-v2:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(59, 130, 246, 0.45) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 24px rgba(59, 130, 246, 0.12) !important;
+}
+
+/* Subtle flashlight spotlight overlay (flat radial beam, zero tilt) */
+.card-spotlight-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.project-card-clean > *,
+.skill-card-v2 > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Large section containers remain 100% stable & grounded */
+.freelance-sales-card,
+.about-glass-card,
+.hero-visual-card {
+  transform: none !important;
+}
+
+/* ==========================================================================
+   BUTTONS: MAGNETIC PULL & PULSING NEON HALOS
+   ========================================================================== */
+.magnetic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+
+/* Pulsing neon halo on WhatsApp button */
+.btn-hire-primary {
+  animation: whatsappNeonPulse 4s infinite ease-in-out;
+}
+
+@keyframes whatsappNeonPulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35), 0 0 0 1px rgba(52, 211, 153, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(16, 185, 129, 0.65), 0 0 20px rgba(52, 211, 153, 0.5);
+    border-color: #6ee7b7;
+  }
+}
+
+/* Pulsing neon halo on Scope / Secondary button */
+.btn-hire-secondary {
+  animation: scopeNeonPulse 4.5s infinite ease-in-out;
+}
+
+@keyframes scopeNeonPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(59, 130, 246, 0.3), 0 0 0 1px rgba(96, 165, 250, 0.5);
+    border-color: rgba(96, 165, 250, 0.6);
+  }
+}
+
+/* Pulsing neon halo on Primary Nav CTA (Get in Touch) */
+.nav-cta {
+  animation: navCtaPulse 4s infinite ease-in-out;
+}
+
+@keyframes navCtaPulse {
+  0%, 100% {
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    box-shadow: 0 2px 20px rgba(255, 255, 255, 0.4), 0 0 14px rgba(255, 255, 255, 0.25);
+  }
+}
+
+/* ==========================================================================
+   STAGGERED SCROLL REVEAL ANIMATIONS
+   ========================================================================== */
+.scroll-reveal-item {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-item.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .aurora-orb-1,
+  .aurora-orb-2,
+  .aurora-orb-3 {
+    animation: none !important;
+  }
 }
